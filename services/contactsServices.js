@@ -55,7 +55,7 @@ async function updateById(id, data) {
   if (index === -1) {
     return null;
   }
-  contacts[index] = { id, ...data };
+  contacts[index] = { ...contacts[index], ...data };
   await writeContacts(contacts);
   return contacts[index];
 }
