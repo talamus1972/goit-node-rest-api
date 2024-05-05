@@ -1,0 +1,2 @@
+GET /api/contacts 200 2036 - 138.176 ms
+POST /api/contacts 201 187 - 119.403 ms

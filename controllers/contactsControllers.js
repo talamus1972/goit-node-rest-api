@@ -6,9 +6,6 @@ import Contact from "../models/contact.js";
 export const getAllContacts = async (req, res, next) => {
   try {
     const result = await Contact.find();
-     if (!result) {
-      throw HttpError(404, "Not found");
-    }
     res.json(result);
   } catch {
     next(error);

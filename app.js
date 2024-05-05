@@ -2,10 +2,16 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import contactsRouter from "./routes/contactsRouter.js";
+import path from "node:path";
+import { createWriteStream } from "node:fs";
 
 const app = express();
 
-app.use(morgan("tiny"));
+const logPath = path.resolve("public", "server.log");
+const accessLogStream = createWriteStream(logPath, { flags: 'a' });
+
+app.use(morgan('tiny', { stream: accessLogStream }));
+
 app.use(cors());
 app.use(express.json());
 
