@@ -21,7 +21,3 @@ const Contact = model("contact", contactSchema);
 
 export default Contact;
 
-const cat = new Contact({
-  name: "Barsik",
-  favorite: true,
-});
