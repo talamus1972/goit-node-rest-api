@@ -1,4 +1,4 @@
-import { Schema, model, version } from "mongoose";
+import { Schema, model } from "mongoose";
 import handleMongooseError from "../helpers/handleMongooseError.js";
 
 const genreList = ["starter", "pro", "business"];
