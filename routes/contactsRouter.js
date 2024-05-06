@@ -8,9 +8,9 @@ import {
   updateStatusContact,
 } from "../controllers/contactsControllers.js";
 
-import validateBody from "../helpers/validateBody.js";
+import {validateBody} from "../helpers/index.js";
 
-import isValidId from "../helpers/isValidId.js";
+import {isValidId} from "../helpers/index.js";
 
 import { createContactSchema } from "../schemas/contactsSchemas.js";
 

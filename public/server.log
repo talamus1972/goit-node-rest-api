@@ -11,3 +11,5 @@ GET /api/contacts/ 500 26 - 3.513 ms
 GET /api/contacts/ 200 2415 - 108.736 ms
 GET /api/contacts1/ 404 29 - 51.981 ms
 GET /api/contacts/ 200 2415 - 74.788 ms
+DELETE /api/contacts/6637ea517b3f541e6fa3c709 200 28 - 175.967 ms
+DELETE /api/contacts/6637ea517b3f541e6fa3c709 404 23 - 47.282 ms
