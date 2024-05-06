@@ -28,3 +28,14 @@ POST /api/contacts/ 400 35 - 4.191 ms
 POST /api/contacts/ 201 190 - 81.592 ms
 GET /api/contacts/66386cbf56059b7be2b7ebf8 200 190 - 80.606 ms
 GET /api/contacts/66386cbf56059b7be2b7e 400 53 - 1.928 ms
+POST /users/register 404 29 - 17.513 ms
+POST /users/register 404 29 - 13.622 ms
+POST /users/register 200 25 - 68.367 ms
+POST /users/register 400 123 - 74.016 ms
+POST /users/register 201 27 - 81.721 ms
+POST /users/register 400 38 - 6.659 ms
+POST /users/register 201 37 - 72.164 ms
+POST /users/register 500 32 - 49.630 ms
+POST /users/register 400 135 - 89.552 ms
+POST /users/register 409 135 - 89.843 ms
+POST /users/register 409 26 - 60.853 ms
