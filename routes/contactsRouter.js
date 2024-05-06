@@ -8,15 +8,13 @@ import {
   updateStatusContact,
 } from "../controllers/contactsControllers.js";
 
-import {validateBody} from "../middlewares/index.js";
+import { isValidId, validateBody } from "../middlewares/index.js";
 
-import {isValidId} from "../helpers/index.js";
-
-import { createContactSchema } from "../schemas/contactsSchemas.js";
-
-import { updateContactSchema } from "../schemas/contactsSchemas.js";
-
-import { updateStatusSchema } from "../schemas/contactsSchemas.js";
+import {
+  createContactSchema,
+  updateContactSchema,
+  updateStatusSchema,
+} from "../schemas/contactsSchemas.js";
 
 const contactsRouter = express.Router();
 

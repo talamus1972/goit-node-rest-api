@@ -1,5 +1,4 @@
 import HttpError from "./HttpError.js";
-import ctrWrapper from "./ctrWrapper.js";
-import isValidId from "./isValidId.js";
+import handleMongooseError from "./handleMongooseError.js";
 
-export {HttpError, ctrWrapper,isValidId}
+export { HttpError, handleMongooseError };
