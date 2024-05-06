@@ -39,3 +39,13 @@ POST /users/register 500 32 - 49.630 ms
 POST /users/register 400 135 - 89.552 ms
 POST /users/register 409 135 - 89.843 ms
 POST /users/register 409 26 - 60.853 ms
+POST /users/register 201 39 - 207.168 ms
+POST /users/login - - - - ms
+POST /users/login 404 29 - 60.200 ms
+POST /users/login 404 29 - 37.241 ms
+POST /users/login 404 29 - 41.766 ms
+POST /users/login 401 40 - 54.667 ms
+POST /users/login 401 40 - 41.492 ms
+POST /users/register 400 153 - 1.982 ms
+POST /users/register 201 26 - 160.490 ms
+POST /users/login 200 183 - 121.536 ms
