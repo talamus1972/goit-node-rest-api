@@ -1,2 +1,13 @@
 GET /api/contacts 200 2036 - 138.176 ms
 POST /api/contacts 201 187 - 119.403 ms
+GET /api/contacts 200 2224 - 392.183 ms
+GET /api/contacts 200 2224 - 59.665 ms
+GET /api/contacts/ 200 2224 - 127.544 ms
+POST /api/contacts/ 201 190 - 118.662 ms
+GET /api/contacts/ 200 2415 - 67.591 ms
+GET /api/contacts/ 500 45 - 37.163 ms
+GET /api/contacts/ 500 26 - 39.783 ms
+GET /api/contacts/ 500 26 - 3.513 ms
+GET /api/contacts/ 200 2415 - 108.736 ms
+GET /api/contacts1/ 404 29 - 51.981 ms
+GET /api/contacts/ 200 2415 - 74.788 ms

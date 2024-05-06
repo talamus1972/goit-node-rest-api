@@ -7,7 +7,7 @@ export const getAllContacts = async (req, res, next) => {
   try {
     const result = await Contact.find();
     res.json(result);
-  } catch {
+  } catch (error){
     next(error);
   }
 };
@@ -25,15 +25,6 @@ export const getOneContact = async (req, res, next) => {
   }
 };
 
-export const deleteContact = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const result = await Contact.findByIdAndDelete(id);
-    res.status(200).json(result);
-  } catch (error) {
-    next(error);
-  }
-};
 
 export const createContact = async (req, res, next) => {
   try {
@@ -44,6 +35,16 @@ export const createContact = async (req, res, next) => {
   }
 };
 
+export const deleteContact = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await Contact.findByIdAndDelete(id);
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+  
+};
 export const updateContact = async (req, res, next) => {
   try {
     const { id } = req.params;
