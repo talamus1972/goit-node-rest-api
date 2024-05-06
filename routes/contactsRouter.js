@@ -8,7 +8,7 @@ import {
   updateStatusContact,
 } from "../controllers/contactsControllers.js";
 
-import {validateBody} from "../helpers/index.js";
+import {validateBody} from "../middlewares/index.js";
 
 import {isValidId} from "../helpers/index.js";
 

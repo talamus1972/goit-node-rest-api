@@ -3,7 +3,7 @@ import {HttpError} from "../helpers/index.js";
 
 import Contact from "../models/contact.js";
 
-export const getAllContacts = async (req, res, next) => {
+const getAllContacts = async (req, res, next) => {
   try {
     const result = await Contact.find();
     res.json(result);
@@ -12,7 +12,7 @@ export const getAllContacts = async (req, res, next) => {
   }
 };
 
-export const getOneContact = async (req, res, next) => {
+const getOneContact = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Contact.findById(id);
@@ -26,7 +26,7 @@ export const getOneContact = async (req, res, next) => {
 };
 
 
-export const createContact = async (req, res, next) => {
+const createContact = async (req, res, next) => {
   try {
     const result = await Contact.create(req.body);
     res.status(201).json(result);
@@ -35,7 +35,7 @@ export const createContact = async (req, res, next) => {
   }
 };
 
-export const deleteContact = async (req, res, next) => {
+const deleteContact = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Contact.findByIdAndDelete(id);
@@ -48,7 +48,7 @@ export const deleteContact = async (req, res, next) => {
   }
   
 };
-export const updateContact = async (req, res, next) => {
+const updateContact = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Contact.findByIdAndUpdate(id, req.body, { new: true });
@@ -60,7 +60,7 @@ export const updateContact = async (req, res, next) => {
     next(error);
   }
 };
-export const updateStatusContact = async (req, res, next) => {
+const updateStatusContact = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Contact.findByIdAndUpdate(id, req.body, { new: true });
@@ -72,3 +72,5 @@ export const updateStatusContact = async (req, res, next) => {
     next(error);
   }
 };
+
+export {getAllContacts, getOneContact, createContact,deleteContact,updateContact,updateStatusContact}
