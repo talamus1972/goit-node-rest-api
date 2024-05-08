@@ -6,6 +6,7 @@ import {
   createContact,
   updateContact,
   updateStatusContact,
+  updateSubscriptionContact
 } from "../controllers/contactsControllers.js";
 
 import { isValidId, validateBody, authenticate } from "../middlewares/index.js";
@@ -14,6 +15,7 @@ import {
   createContactSchema,
   updateContactSchema,
   updateStatusSchema,
+  updateSubscriptionSchema,
 } from "../schemas/contactsSchemas.js";
 
 const contactsRouter = express.Router();
@@ -45,6 +47,14 @@ contactsRouter.patch(
   isValidId,
   validateBody(updateStatusSchema),
   updateStatusContact
+);
+
+contactsRouter.patch(
+  "/:id/subscription",
+  authenticate,
+  isValidId,
+  validateBody(updateSubscriptionSchema),
+  updateSubscriptionContact
 );
 
 export default contactsRouter;

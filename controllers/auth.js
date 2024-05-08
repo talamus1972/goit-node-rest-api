@@ -40,7 +40,8 @@ export const login = async (req, res, next) => {
       id: user._id,
     };
 
-    const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "240h" });
+    const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "24h" });
+    await User.findByIdAndUpdate(user._id, {token})
 
     res.json({ token });
   } catch (error) {
@@ -63,7 +64,15 @@ export const getCurrent = async (req, res, next) => {
   }
 };
   
-  
+export const logout = async (req, res, next) => {
+  try {
+    const { _id } = req.user;
+    await User.findByIdAndUpdate(_id, { token: "" });
+    res.json({ message: "No Content" });
+  } catch (error) {
+    next(error);
+  }
+};
   
  
  
