@@ -47,3 +47,23 @@ export const login = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getCurrent = async (req, res, next) => {
+  try {
+    const { email, subscription } = req.user;
+    if (!req.user) {
+      return next(HttpError(401, "Not authorized"));
+    }
+    res.json({
+      email,
+      subscription
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+  
+  
+  
+ 
+ 
