@@ -67,3 +67,6 @@ GET /api/contacts/ 401 28 - 23.317 ms
 GET /api/contacts/ 200 2415 - 58.394 ms
 POST /users/login 200 183 - 103.170 ms
 GET /api/contacts/ 200 2415 - 114.319 ms
+POST /api/contacts/ 400 45 - 410.321 ms
+POST /api/contacts/ 400 45 - 45.829 ms
+POST /api/contacts/ 400 45 - 37.564 ms
