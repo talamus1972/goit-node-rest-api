@@ -233,3 +233,11 @@ POST /users/subscription 404 29 - 0.455 ms
 PATCH /users/subscription 404 29 - 0.506 ms
 PATCH /users/663dd93b2efb95ea8145a59c/subscription 500 36 - 40.942 ms
 PATCH /users/663dd93b2efb95ea8145a59c/subscription 200 414 - 126.860 ms
+PATCH /api/contacts/663dd93b2efb95ea8145a59c/favorite 404 23 - 91.231 ms
+PATCH /api/contacts/663dd93b2efb95ea8145a59c/favorite 404 23 - 99.842 ms
+PATCH /api/contacts/663dd93b2efb95ea8145a59c/favorite 404 23 - 121.192 ms
+PATCH /api/contacts/663dd93b2efb95ea8145a59c/favorite 404 23 - 101.104 ms
+PATCH /api/contacts/663dd93b2efb95ea8145a59c/favorite 404 23 - 92.810 ms
+PATCH /api/contacts/663dd9f52efb95ea8145a5a2/favorite 200 232 - 134.052 ms
+GET /api/contacts/?favorite=true 401 28 - 2.496 ms
+GET /api/contacts/?favorite=true 200 189 - 180.003 ms

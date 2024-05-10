@@ -6,6 +6,7 @@ import {
   createContact,
   updateContact,
   updateStatusContact,
+  getFavoriteContacts,
 } from "../controllers/contactsControllers.js";
 
 import { isValidId, validateBody, authenticate } from "../middlewares/index.js";
@@ -19,6 +20,8 @@ import {
 const contactsRouter = express.Router();
 
 contactsRouter.get("/", authenticate, getAllContacts);
+
+contactsRouter.get("/", authenticate, getFavoriteContacts);
 
 contactsRouter.get("/:id", authenticate, isValidId, getOneContact);
 

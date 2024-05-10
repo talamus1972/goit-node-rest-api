@@ -1,16 +1,18 @@
-
-import {HttpError} from "../helpers/index.js";
+import { HttpError } from "../helpers/index.js";
 
 import Contact from "../models/contact.js";
 
 const getAllContacts = async (req, res, next) => {
   try {
-    const { _id: owner } = req.user
-    const { page = 1, limit = 20 } = req.query
-    const skip = (page-1)*limit
-    const result = await Contact.find({owner}, "-createdAt -updatedAt", {skip, limit}).populate("owner", "email");
+    const { _id: owner } = req.user;
+    const { page = 1, limit = 20 } = req.query;
+    const skip = (page - 1) * limit;
+    const result = await Contact.find({ owner }, "-createdAt -updatedAt", {
+      skip,
+      limit,
+    }).populate("owner", "email");
     res.json(result);
-  } catch (error){
+  } catch (error) {
     next(error);
   }
 };
@@ -28,11 +30,10 @@ const getOneContact = async (req, res, next) => {
   }
 };
 
-
 const createContact = async (req, res, next) => {
   try {
-    const {_id: owner} = req.user
-    const result = await Contact.create({...req.body, owner});
+    const { _id: owner } = req.user;
+    const result = await Contact.create({ ...req.body, owner });
     res.status(201).json(result);
   } catch (error) {
     next(error);
@@ -43,14 +44,13 @@ const deleteContact = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Contact.findByIdAndDelete(id);
-     if (!result) {
+    if (!result) {
       throw HttpError(404, "Not Found");
     }
-    res.json({message: "Delete success"});
+    res.json({ message: "Delete success" });
   } catch (error) {
     next(error);
   }
-  
 };
 const updateContact = async (req, res, next) => {
   try {
@@ -77,6 +77,29 @@ const updateStatusContact = async (req, res, next) => {
   }
 };
 
+const getFavoriteContacts = async (req, res, next) => {
+  try {
+    const { favorite } = req.query;
+    let filter = {};
 
+    if (favorite === "true") {
+      filter = { favorite: true };
+    }
 
-export {getAllContacts, getOneContact, createContact,deleteContact,updateContact,updateStatusContact}
+    const contacts = await Contact.find(filter);
+
+    res.json(contacts);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export {
+  getAllContacts,
+  getOneContact,
+  createContact,
+  deleteContact,
+  updateContact,
+  updateStatusContact,
+  getFavoriteContacts,
+};
