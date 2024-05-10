@@ -41,7 +41,7 @@ export const login = async (req, res, next) => {
     };
 
     const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "24h" });
-    await User.findByIdAndUpdate(user._id, {token})
+    await User.findByIdAndUpdate(user._id, { token });
 
     res.json({ token });
   } catch (error) {
@@ -57,13 +57,13 @@ export const getCurrent = async (req, res, next) => {
     }
     res.json({
       email,
-      subscription
+      subscription,
     });
   } catch (error) {
     next(error);
   }
 };
-  
+
 export const logout = async (req, res, next) => {
   try {
     const { _id } = req.user;
@@ -73,6 +73,18 @@ export const logout = async (req, res, next) => {
     next(error);
   }
 };
-  
- 
- 
+
+export const updateSubscriptionContact = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await User.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    if (!result) {
+      throw HttpError(404, "Not Found");
+    }
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+};

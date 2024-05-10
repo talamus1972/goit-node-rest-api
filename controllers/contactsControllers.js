@@ -77,17 +77,6 @@ const updateStatusContact = async (req, res, next) => {
   }
 };
 
-const updateSubscriptionContact = async (req, res, next) => {
-   try {
-    const { id } = req.params;
-    const result = await Contact.findByIdAndUpdate(id, req.body, { new: true });
-    if (!result) {
-      throw HttpError(404, "Not Found");
-    }
-    res.json(result);
-  } catch (error) {
-    next(error);
-  }
-};
 
-export {getAllContacts, getOneContact, createContact,deleteContact,updateContact,updateStatusContact, updateSubscriptionContact}
+
+export {getAllContacts, getOneContact, createContact,deleteContact,updateContact,updateStatusContact}

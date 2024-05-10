@@ -221,3 +221,15 @@ PATCH /api/contacts/663b981a001b9f1e31916b7f/subscription 500 44 - 154.939 ms
 PATCH /api/contacts/663b981a001b9f1e31916b7f/subscription 500 44 - 162.670 ms
 PATCH /api/contacts/663b981a001b9f1e31916b7f/subscription 200 4 - 162.104 ms
 PATCH /api/contacts/663b981a001b9f1e31916b7f/subscription 404 23 - 164.804 ms
+GET /users/register 404 29 - 20.383 ms
+POST /users/register 201 26 - 177.670 ms
+POST /users/login 200 183 - 178.784 ms
+POST /api/contacts/ 400 35 - 54.342 ms
+POST /api/contacts/ 201 233 - 107.569 ms
+GET /api/contacts/ 200 190 - 137.651 ms
+GET /users/current 200 51 - 37.293 ms
+GET /users/subscription 404 29 - 0.491 ms
+POST /users/subscription 404 29 - 0.455 ms
+PATCH /users/subscription 404 29 - 0.506 ms
+PATCH /users/663dd93b2efb95ea8145a59c/subscription 500 36 - 40.942 ms
+PATCH /users/663dd93b2efb95ea8145a59c/subscription 200 414 - 126.860 ms
