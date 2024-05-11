@@ -80,8 +80,8 @@ export const logout = async (req, res, next) => {
 
 export const updateSubscriptionUser = async (req, res, next) => {
   try {
-    const { _id: userId } = req.user;
-    const result = await User.findOneAndUpdate({ _id: userId }, req.body, {
+    const { _id } = req.user;
+    const result = await User.findOneAndUpdate({ _id }, req.body, {
       new: true,
     });
     if (!result) {
