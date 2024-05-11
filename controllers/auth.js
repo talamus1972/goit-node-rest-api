@@ -17,7 +17,7 @@ export const register = async (req, res, next) => {
 
     const newUser = await User.create({ ...req.body, password: hashPassword });
 
-    res.status(201).json({ email: newUser.email });
+    res.status(201).json({ email: newUser.email, subscription: "starter" });
   } catch (error) {
     next(error);
   }
@@ -41,9 +41,13 @@ export const login = async (req, res, next) => {
     };
 
     const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "24h" });
-    await User.findByIdAndUpdate(user._id, { token });
+    await User.findOneAndUpdate(user._id, { token });
 
-    res.json({ token });
+    res.json({
+      token,
+      email: user.email,
+      subscription: user.subscription,
+    });
   } catch (error) {
     next(error);
   }
@@ -67,17 +71,17 @@ export const getCurrent = async (req, res, next) => {
 export const logout = async (req, res, next) => {
   try {
     const { _id } = req.user;
-    await User.findByIdAndUpdate(_id, { token: "" });
-    res.json({ message: "No Content" });
+    await User.findOneAndUpdate(_id, { token: "" });
+    res.status(204).end();
   } catch (error) {
     next(error);
   }
 };
 
-export const updateSubscriptionContact = async (req, res, next) => {
+export const updateSubscriptionUser = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const result = await User.findByIdAndUpdate(id, req.body, {
+    const { _id: userId } = req.user;
+    const result = await User.findOneAndUpdate({ _id: userId }, req.body, {
       new: true,
     });
     if (!result) {

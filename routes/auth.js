@@ -9,7 +9,7 @@ import {
   login,
   getCurrent,
   logout,
-  updateSubscriptionContact,
+  updateSubscriptionUser,
 } from "../controllers/auth.js";
 
 const authRouter = express.Router();
@@ -25,7 +25,7 @@ authRouter.patch(
   authenticate,
   isValidId,
   validateBody(updateSubscriptionSchema),
-  updateSubscriptionContact
+  updateSubscriptionUser
 );
 
 export default authRouter;
