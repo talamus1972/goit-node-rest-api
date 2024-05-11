@@ -267,3 +267,4 @@ GET /api/contacts/ 200 570 - 151.491 ms
 GET /users/current 200 47 - 36.641 ms
 PATCH /users/663dd93b2efb95ea8145a59c/subscription 404 23 - 81.724 ms
 PATCH /users/663dd93b2efb95ea8145a59c/subscription 200 418 - 124.754 ms
+PATCH /users/663dd93b2efb95ea8145a59c/subscription 200 414 - 133.471 ms
