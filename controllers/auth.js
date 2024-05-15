@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import gravatar from "gravatar"
 import path from "node:path"
 import * as fs from "node:fs/promises"
+import Jimp from "jimp";
 
 const { SECRET_KEY } = process.env;
  
@@ -110,7 +111,14 @@ export const updateAvatar = async (req, res, next) => {
       return res.status(404).send({message: "User not found"})
     }
 
-  const avatarURL = `/avatars/${req.file.filename}`;
+    const avatarURL = `/avatars/${req.file.filename}`;
+    
+ const image = await Jimp.read(path.resolve("public/avatars", req.file.filename));
+
+    await image.resize(250, 250);
+
+    await image.writeAsync(path.resolve("public/avatars", req.file.filename));
+
     res.json({avatarURL});
   } catch (error) {
     next(error);
