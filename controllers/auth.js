@@ -2,13 +2,12 @@ import User from "../models/user.js";
 import HttpError from "../helpers/HttpError.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import gravatar from "gravatar"
-import path from "node:path"
-import * as fs from "node:fs/promises"
+import gravatar from "gravatar";
+import path from "node:path";
+import * as fs from "node:fs/promises";
 import Jimp from "jimp";
 
 const { SECRET_KEY } = process.env;
- 
 
 export const register = async (req, res, next) => {
   try {
@@ -20,9 +19,13 @@ export const register = async (req, res, next) => {
     }
     const hashPassword = await bcrypt.hash(password, 10);
 
-    const avatarURL = gravatar.url(email)
+    const avatarURL = gravatar.url(email);
 
-    const newUser = await User.create({ ...req.body, password: hashPassword, avatarURL });
+    const newUser = await User.create({
+      ...req.body,
+      password: hashPassword,
+      avatarURL,
+    });
 
     res.status(201).json({ email: newUser.email, subscription: "starter" });
   } catch (error) {
@@ -100,26 +103,35 @@ export const updateSubscriptionUser = async (req, res, next) => {
   }
 };
 
-
-
 export const updateAvatar = async (req, res, next) => {
-  try {   
-    await fs.rename(req.file.path, path.resolve("public/avatars",req.file.filename))
-    
-    const user = User.findByIdAndUpdate(req.user.id, {avatar: req.file.filename}, {new: true})
-    if (user === null) {
-      return res.status(404).send({message: "User not found"})
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: "File not provided" });
+    }
+
+    await fs.rename(
+      req.file.path,
+      path.resolve("public/avatars", req.file.filename)
+    );
+
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      { avatar: req.file.filename },
+      { new: true }
+    );
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
     }
 
     const avatarURL = `/avatars/${req.file.filename}`;
-    
- const image = await Jimp.read(path.resolve("public/avatars", req.file.filename));
 
+    const image = await Jimp.read(
+      path.resolve("public/avatars", req.file.filename)
+    );
     await image.resize(250, 250);
-
     await image.writeAsync(path.resolve("public/avatars", req.file.filename));
 
-    res.json({avatarURL});
+    res.json({ avatarURL });
   } catch (error) {
     next(error);
   }
