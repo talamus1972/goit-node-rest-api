@@ -325,3 +325,4 @@ PATCH /users/avatars 500 201 - 172.975 ms
 PATCH /users/avatars 500 201 - 192.946 ms
 PATCH /users/avatars 200 72 - 660.209 ms
 PATCH /users/avatars 200 60 - 589.742 ms
+PATCH /users/avatars 200 60 - 606.417 ms
