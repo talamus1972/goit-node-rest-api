@@ -1,5 +1,5 @@
 import express from "express";
-import { validateBody, authenticate, isValidId } from "../middlewares/index.js";
+import { validateBody, authenticate, isValidId, upload } from "../middlewares/index.js";
 import {
   registerSchema,
   updateSubscriptionSchema,
@@ -10,6 +10,7 @@ import {
   getCurrent,
   logout,
   updateSubscriptionUser,
+  updateAvatar
 } from "../controllers/auth.js";
 
 const authRouter = express.Router();
@@ -27,5 +28,7 @@ authRouter.patch(
   validateBody(updateSubscriptionSchema),
   updateSubscriptionUser
 );
+
+authRouter.patch("/avatars", authenticate, upload.single("avatar"), updateAvatar)
 
 export default authRouter;
