@@ -114,16 +114,16 @@ export const updateAvatar = async (req, res, next) => {
       path.resolve("public/avatars", req.file.filename)
     );
 
+    const avatarURL = `/avatars/${req.file.filename}`;
+
     const user = await User.findByIdAndUpdate(
       req.user.id,
-      { avatar: req.file.filename },
+      { avatarURL: req.file.filename },
       { new: true }
     );
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
-    const avatarURL = `/avatars/${req.file.filename}`;
 
     const image = await Jimp.read(
       path.resolve("public/avatars", req.file.filename)
